@@ -81,5 +81,5 @@ type UserMetricsObj struct {
 	Following int `json:"following_count"`
 	Tweets    int `json:"tweet_count"`
 	Listed    int `json:"listed_count"`
-	Like      int `json:"like_count"`
+	Likes      int `json:"like_count"`
 }
