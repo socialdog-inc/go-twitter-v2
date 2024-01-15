@@ -32,6 +32,10 @@ const (
 	UserFieldVerified UserField = "verified"
 	// UserFieldWithHeld contains withholding details
 	UserFieldWithHeld UserField = "withheld"
+	// UserFieldVerifiedType indicates if this user is a verified Twitter User Type.
+	UserFieldVerifiedType UserField = "verified_type"
+	// UserFieldVerifiedType is the unique identifier of this user's most recent Tweet.
+	UserFieldMostRecentTweetID UserField = "most_recent_tweet_id"
 )
 
 func userFieldStringArray(arr []UserField) []string {
@@ -42,22 +46,33 @@ func userFieldStringArray(arr []UserField) []string {
 	return strs
 }
 
+type UserURLEntityObj struct {
+	URLs []EntityURLObj `json:"urls"`
+}
+
+type UserEntitiesObj struct {
+	URL         *UserURLEntityObj `json:"url"`
+	Description *EntitiesObj      `json:"description"`
+}
+
 // UserObj contains Twitter user account metadata describing the referenced user
 type UserObj struct {
-	ID              string          `json:"id"`
-	Name            string          `json:"name"`
-	UserName        string          `json:"username"`
-	CreatedAt       string          `json:"created_at,omitempty"`
-	Description     string          `json:"description,omitempty"`
-	Entities        *EntitiesObj    `json:"entities,omitempty"`
-	Location        string          `json:"location,omitempty"`
-	PinnedTweetID   string          `json:"pinned_tweet_id,omitempty"`
-	ProfileImageURL string          `json:"profile_image_url,omitempty"`
-	Protected       bool            `json:"protected,omitempty"`
-	PublicMetrics   *UserMetricsObj `json:"public_metrics,omitempty"`
-	URL             string          `json:"url,omitempty"`
-	Verified        bool            `json:"verified,omitempty"`
-	WithHeld        *WithHeldObj    `json:"withheld,omitempty"`
+	ID                string           `json:"id"`
+	Name              string           `json:"name"`
+	UserName          string           `json:"username"`
+	CreatedAt         string           `json:"created_at,omitempty"`
+	Description       string           `json:"description,omitempty"`
+	Entities          *UserEntitiesObj `json:"entities,omitempty"`
+	Location          string           `json:"location,omitempty"`
+	PinnedTweetID     string           `json:"pinned_tweet_id,omitempty"`
+	ProfileImageURL   string           `json:"profile_image_url,omitempty"`
+	Protected         bool             `json:"protected,omitempty"`
+	PublicMetrics     *UserMetricsObj  `json:"public_metrics,omitempty"`
+	URL               string           `json:"url,omitempty"`
+	Verified          bool             `json:"verified,omitempty"`
+	WithHeld          *WithHeldObj     `json:"withheld,omitempty"`
+	VerifiedType      string           `json:"verified_type,omitempty"`
+	MostRecentTweetID string           `json:"most_recent_tweet_id,omitempty"`
 }
 
 // UserMetricsObj contains details about activity for this user
@@ -66,4 +81,5 @@ type UserMetricsObj struct {
 	Following int `json:"following_count"`
 	Tweets    int `json:"tweet_count"`
 	Listed    int `json:"listed_count"`
+	Likes     int `json:"like_count"`
 }
