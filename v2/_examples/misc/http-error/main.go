@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 
-	twitter "github.com/g8rswimmer/go-twitter/v2"
+	twitter "github.com/socialdog-inc/go-twitter-v2/v2"
 )
 
 type authorize struct {
