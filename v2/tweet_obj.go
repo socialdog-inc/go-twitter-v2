@@ -73,6 +73,7 @@ type TweetObj struct {
 	ReferencedTweets   []*TweetReferencedTweetObj   `json:"referenced_tweets,omitempty"`
 	Source             string                       `json:"source,omitempty"`
 	WithHeld           *WithHeldObj                 `json:"withheld,omitempty"`
+	NoteTweet          *TweetNoteTweetObj           `json:"note_tweet,omitempty"`
 }
 
 // TweetAttachmentsObj specifics the type of attachment present in the tweet
@@ -122,4 +123,10 @@ type TweetMetricsObj struct {
 type TweetReferencedTweetObj struct {
 	Type string `json:"type"`
 	ID   string `json:"id"`
+}
+
+// TweetNoteTweetObj is information for Tweets longer than 280 characters.
+type TweetNoteTweetObj struct {
+	Text     string              `json:"text"`
+	Entities *EntityNoteTweetObj `json:"entities"`
 }
