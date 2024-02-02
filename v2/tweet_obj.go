@@ -42,6 +42,8 @@ const (
 	TweetFieldSource TweetField = "source"
 	// TweetFieldWithHeld contains withholding details
 	TweetFieldWithHeld TweetField = "withheld"
+	// TweetFieldNoteTweet contains note_tweet details
+	TweetFieldNoteTweet TweetField = "note_tweet"
 )
 
 func tweetFieldStringArray(arr []TweetField) []string {
