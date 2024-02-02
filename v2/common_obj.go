@@ -61,3 +61,11 @@ type WithHeldObj struct {
 	Copyright    bool     `json:"copyright"`
 	CountryCodes []string `json:"country_codes"`
 }
+
+// EntityNoteTweetObj contains note_tweet details
+type EntityNoteTweetObj struct {
+	URLs     []EntityURLObj     `json:"urls"`
+	HashTags []EntityTagObj     `json:"hashtags"`
+	Mentions []EntityMentionObj `json:"mentions"`
+	CashTags []EntityTagObj     `json:"cashtags"`
+}
