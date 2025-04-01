@@ -6,8 +6,17 @@ import (
 	"strings"
 )
 
-// RetweetData will be returned by the manage retweet APIs
+// RetweetData will be returned by the create retweet API
+// Warning: Documentation lists the repost ID field name as "id" but as of 2025-04-01 it's actually "rest_id" so both should be checked.
+// @see https://docs.x.com/x-api/posts/causes-the-user-in-the-path-to-repost-the-specified-post#response-data
 type RetweetData struct {
+	Retweeted bool   `json:"retweeted"`
+	ID        string `json:"id"`
+	RestID    string `json:"rest_id"`
+}
+
+// DeleteRetweetData will be returned by the delete retweet API
+type DeleteRetweetData struct {
 	Retweeted bool `json:"retweeted"`
 }
 
@@ -19,7 +28,7 @@ type UserRetweetResponse struct {
 
 // DeleteUserRetweetResponse is the response with a user retweet
 type DeleteUserRetweetResponse struct {
-	Data      *RetweetData `json:"data"`
+	Data      *DeleteRetweetData `json:"data"`
 	RateLimit *RateLimit
 }
 
