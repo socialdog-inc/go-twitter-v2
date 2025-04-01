@@ -15,7 +15,7 @@ type RetweetData struct {
 	RestID    string `json:"rest_id"`
 }
 
-// RetweetData will be returned by the delete retweet API
+// DeleteRetweetData will be returned by the delete retweet API
 type DeleteRetweetData struct {
 	Retweeted bool `json:"retweeted"`
 }
