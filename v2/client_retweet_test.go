@@ -41,7 +41,9 @@ func TestClient_UserRetweet(t *testing.T) {
 					}
 					body := `{
 						"data": {
-						  "retweeted": true
+						  "retweeted": true,
+					      "id": "repost-1234",
+						  "rest_id": "repost-1234"
 						}
 					  }`
 					return &http.Response{
@@ -64,6 +66,8 @@ func TestClient_UserRetweet(t *testing.T) {
 			want: &UserRetweetResponse{
 				Data: &RetweetData{
 					Retweeted: true,
+					ID:        "repost-1234",
+					RestID:    "repost-1234",
 				},
 				RateLimit: &RateLimit{
 					Limit:     15,
@@ -163,7 +167,7 @@ func TestClient_DeleteUserRetweet(t *testing.T) {
 				tweetID: "tweet-1234",
 			},
 			want: &DeleteUserRetweetResponse{
-				Data: &RetweetData{
+				Data: &DeleteRetweetData{
 					Retweeted: false,
 				},
 				RateLimit: &RateLimit{
