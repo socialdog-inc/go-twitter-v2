@@ -26,7 +26,7 @@ func (t CreateTweetRequest) validate() error {
 			return fmt.Errorf("create tweet error: %w", err)
 		}
 	}
-	if t.Poll != nil {
+	if t.Reply != nil {
 		if err := t.Reply.validate(); err != nil {
 			return fmt.Errorf("create tweet error: %w", err)
 		}
